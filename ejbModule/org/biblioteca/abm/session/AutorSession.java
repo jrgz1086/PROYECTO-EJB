@@ -10,6 +10,7 @@ import org.biblioteca.entidad.Autor;
 public class AutorSession implements AutorSessionRemote {
 	@PersistenceContext
 	EntityManager em;
+	
 
 	@Override
 	public List<Autor> buscarTodos() throws Exception {
@@ -28,7 +29,7 @@ public class AutorSession implements AutorSessionRemote {
 	public Autor actualizar(Autor autorAct) throws Exception {
 		Autor autor = buscarPorCodigo(autorAct.getCodigo()); // Busca el
 																// objeto ciudad
-		if (autor == null) { // Si no encuentra autor valdrá null
+		if (autor == null) { // Si no encuentra autor valdrï¿½ null
 			autorAct.setCodigo(null); // para que la bd auto-genere el ID
 			em.persist(autorAct);
 			em.refresh(autorAct);
