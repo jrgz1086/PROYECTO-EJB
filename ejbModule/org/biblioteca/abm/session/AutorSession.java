@@ -27,9 +27,8 @@ public class AutorSession implements AutorSessionRemote {
 
 	@Override
 	public Autor actualizar(Autor autorAct) throws Exception {
-		Autor autor = buscarPorCodigo(autorAct.getCodigo()); // Busca el
-																// objeto ciudad
-		if (autor == null) { // Si no encuentra autor valdr� null
+		Autor autor = buscarPorCodigo(autorAct.getCodigo()); // Busca el objeto ciudad
+		if (autor == null) { // Si no encuentra autor valdra null
 			autorAct.setCodigo(null); // para que la bd auto-genere el ID
 			em.persist(autorAct);
 			em.refresh(autorAct);
