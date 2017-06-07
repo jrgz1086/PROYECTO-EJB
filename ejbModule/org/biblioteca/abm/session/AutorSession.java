@@ -14,7 +14,7 @@ public class AutorSession implements AutorSessionRemote {
 
 	@Override
 	public List<Autor> buscarTodos() throws Exception {
-		String jpql = "SELECT o FROM Autor o ORDER BY o.codigo ORDER BY o.codigo";
+		String jpql = "SELECT o FROM Autor o ORDER BY o.codigo";
 		List<Autor> ciudades = (List<Autor>) em.createQuery(jpql,
 				Autor.class).getResultList();
 		return ciudades;
@@ -27,7 +27,7 @@ public class AutorSession implements AutorSessionRemote {
 
 	@Override
 	public Autor actualizar(Autor autorAct) throws Exception {
-		Autor autor = buscarPorCodigo(autorAct.getCodigo()); // Busca el objeto ciudad
+		Autor autor = buscarPorCodigo(autorAct.getCodigo()); // Busca el objeto autor
 		if (autor == null) { // Si no encuentra autor valdra null
 			autorAct.setCodigo(null); // para que la bd auto-genere el ID
 			em.persist(autorAct);
@@ -40,9 +40,9 @@ public class AutorSession implements AutorSessionRemote {
 
 	@Override
 	public void eliminar(Integer codigo) throws Exception {
-		Autor ciu = buscarPorCodigo(codigo); // Busca el objeto ciudad
-		if (ciu != null) {
-			em.remove(ciu);
+		Autor autor = buscarPorCodigo(codigo); // Busca el objeto autor
+		if (autor != null) {
+			em.remove(autor);
 		}
 	}
 }
